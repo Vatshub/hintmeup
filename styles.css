@@ -1,0 +1,92 @@
+/* Hint Me Up website styles.
+   The look borrows from Hathiram's classroom: a chalkboard-green board,
+   chalk-white text, warm wood, and the yellow of the Hint Me Up logo. */
+
+:root {
+  --board: #1f3b2d;      /* chalkboard green: hero background */
+  --board-deep: #16291f; /* darker board edge */
+  --chalk: #eef0ea;      /* chalk white: text on the board */
+  --wood: #7a4a2a;       /* classroom wood: frame + accents */
+  --gold: #f2b52b;       /* logo yellow: highlights */
+  --ink: #1d2433;        /* body text on light pages */
+  --paper: #fbfbf8;      /* light page background */
+  --muted: #5b6475;      /* secondary text */
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+a { color: var(--wood); text-underline-offset: 3px; }
+a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+/* ---------- Top bar with the channel name and page links ---------- */
+.topbar {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 980px; margin: 0 auto; padding: 18px 24px;
+}
+.brand { font-family: "Baloo 2", system-ui, sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--ink); text-decoration: none; }
+.topbar nav a { margin-left: 18px; color: var(--muted); text-decoration: none; font-weight: 600; }
+.topbar nav a:hover { color: var(--ink); }
+
+/* ---------- Homepage hero: a framed chalkboard ---------- */
+.board {
+  max-width: 980px; margin: 8px auto 0; padding: 0 24px;
+}
+.board-inner {
+  background: radial-gradient(ellipse at 30% 20%, #284a39 0%, var(--board) 55%, var(--board-deep) 100%);
+  border: 14px solid var(--wood);
+  border-radius: 6px;
+  padding: 56px 40px 48px;
+  color: var(--chalk);
+}
+.board h1 {
+  font-family: "Baloo 2", system-ui, sans-serif;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 1.02; margin: 0 0 18px; font-weight: 800;
+}
+.board p { max-width: 58ch; margin: 0 0 12px; font-size: 1.15rem; color: #d9ddd3; }
+.board .follow { margin-top: 26px; display: flex; gap: 14px; flex-wrap: wrap; }
+.board .follow a {
+  background: var(--gold); color: var(--ink); font-weight: 700;
+  padding: 10px 18px; border-radius: 999px; text-decoration: none;
+}
+.board .follow a.plain { background: transparent; color: var(--chalk); border: 2px solid #5f7a6b; }
+
+/* ---------- Daily schedule: a real sequence, so it is a timeline ---------- */
+.schedule { max-width: 980px; margin: 48px auto; padding: 0 24px; }
+.schedule h2, .doc h1, .doc h2 { font-family: "Baloo 2", system-ui, sans-serif; line-height: 1.15; }
+.schedule h2 { font-size: 1.8rem; margin: 0 0 18px; }
+.timeline { list-style: none; margin: 0; padding: 0; border-left: 4px solid var(--gold); }
+.timeline li { padding: 4px 0 18px 22px; position: relative; }
+.timeline li::before {
+  content: ""; position: absolute; left: -11px; top: 10px;
+  width: 18px; height: 18px; border-radius: 50%; background: var(--board); border: 3px solid var(--gold);
+}
+.timeline strong { font-family: "Baloo 2", system-ui, sans-serif; font-size: 1.2rem; display: block; }
+
+/* ---------- Legal pages: plain, readable text ---------- */
+.doc { max-width: 720px; margin: 24px auto 64px; padding: 0 24px; }
+.doc h1 { font-size: 2.4rem; margin: 12px 0 4px; }
+.doc .updated { color: var(--muted); margin: 0 0 28px; }
+.doc h2 { font-size: 1.35rem; margin: 32px 0 8px; }
+.doc ul { padding-left: 1.2em; }
+
+footer {
+  max-width: 980px; margin: 0 auto; padding: 24px; color: var(--muted);
+  border-top: 1px solid #e3e5df; font-size: 0.95rem;
+}
+footer a { color: var(--muted); margin-right: 16px; }
+
+@media (max-width: 600px) {
+  .board-inner { padding: 36px 22px 32px; border-width: 10px; }
+  .topbar nav a { margin-left: 12px; }
+}
